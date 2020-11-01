@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#script to select spotify theme through spicetify
+
+echo select your spotify theme:
+select MAIN_THEME in $( ls ~/.config/spicetify/Themes/ )
+do
+
+	THEME_FOLDER=~/.config/spicetify/Themes/$MAIN_THEME 
+	THEME_SCHEMES=$(grep -Po "(?<=\[)\w+(?=])" $THEME_FOLDER/color.ini)
+	THEME_SCHEMES_NUMBER=($(grep -Poc "(?<=\[)\w+(?=])" $THEME_FOLDER/color.ini))
+
+	#if there's no other scheme, apply base theme
+	if [ $THEME_SCHEMES_NUMBER  -eq 1 ]
+	then
+  	spicetify config current_theme $MAIN_THEME && spicetify apply 
+		break
+	else
+
+	 echo select your theme variation color:
+ 	 select SCHEME in $THEME_SCHEMES
+	 do
+	 	if [ $SCHEME -eq "Base" ] 
+	 	then
+   	 spicetify config current_theme $MAIN_THEME && spicetify apply 
+		 break
+	   else
+   	 spicetify config current_theme $MAIN_THEME && \
+		 spicetify config color_scheme $SCHEME && spicetify apply
+		 break
+	 	fi
+	 done
+	fi
+#spicetify config current_theme $THEME && spicetify apply
+done

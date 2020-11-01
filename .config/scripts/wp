@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#change wallpaper selecting images through wp folder
+
+select IMG in $(ls ~/Imagens/wp)
+do
+				feh --bg-fill ~/Imagens/wp/$IMG
+				break;
+done
+

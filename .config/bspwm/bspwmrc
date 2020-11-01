@@ -1,0 +1,24 @@
+#! /bin/sh
+
+$HOME/.config/polybar/launch.sh
+
+export TERM="alacritty"
+export BROWSER="chromium"
+export MUSIC="spotify"
+export CODE="code"
+
+sxhkd &
+$HOME/.config/polybar/launch.sh
+
+
+#bspc config pointer_follows_focus true
+
+bspc monitor DVI-I-1 -d 
+bspc monitor HDMI-1 -d 
+
+bspc config border_width         2
+bspc config focused_border_color		\#FF9800
+bspc config window_gap						2
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+

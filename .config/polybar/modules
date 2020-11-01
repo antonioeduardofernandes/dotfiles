@@ -1,0 +1,52 @@
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = false
+enable-scroll = false
+enable-click = false
+label-dimmed-foreground = ${colors.fg}
+label-focused-foreground = ${colors.accent}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+format =  <label-layout>
+blacklist-0 = scroll lock
+blacklist-1 = num lock
+label-indicator-foreground = ${colors.fg}
+label-indicator-padding = 1
+label-indicator-on-capslock = "caps"
+
+[module/alsa]
+type = internal/alsa
+master-mixer = Master
+interval = 1
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${colors.fg}
+label-muted = 
+label-muted-foreground = ${colors.danger}
+ramp-volume-0 =  
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+[module/music_player]
+type = custom/script
+format = <label>
+format-prefix =  
+format-prefix-margin-right = 1
+format-prefix-foreground = ${material.green}
+exec = ~/.config/polybar/scripts/music_player.sh
+tail = true
+label-foreground = ${material.green}
+
+[module/network]
+type = custom/script
+exec = ~/.config/polybar/scripts/checkNetwork.sh
+tail = true
+label-foreground = ${colors.fg}
+
+[module/date]
+type = internal/date
+label = %time%
+format =  <label>
+interval = 1.0
+time = %H:%M

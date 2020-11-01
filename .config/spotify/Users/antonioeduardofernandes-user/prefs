@@ -1,0 +1,7 @@
+gaia.attached_device_id="c78b6cf186591380274be6eada30d6258156e829"
+audio.sync_bitrate_enumeration=4
+audio.play_bitrate_enumeration=4
+ui.hide_hpto=true
+ui.show_friend_feed=false
+app.player.autoplay=false
+app.player.volume=43908
